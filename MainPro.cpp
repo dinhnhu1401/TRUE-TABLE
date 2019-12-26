@@ -1,10 +1,7 @@
 /*
-* MSSV: 1511219
 * Ho Ten: Dinh Thi Quynh Nhu
-* Lop: 15TTH2
-* THUC HANH TOAN ROI RAC : Bai Tap 1 - TAO BANG CHAN TRI
+* THUC HANH TOAN ROI RAC : TAO BANG CHAN TRI
 * DEADLINE: Friday, 26th, Apr, 2019
-* Editor: Visual Studio Code (Different from Visual Studio C++/C)
 * Compile and execute by terminal: 
 	+ Using: g++ [file .cpp] [option] [executed file]
 	+ After that, executes this file.
@@ -32,7 +29,7 @@ int main()
 	vector<vector<int> > TrueTable;
 
 	cout << "Logic Expression: ";
-	logicExp = readFile("logicexpression.txt");
+	logicExp = readFile("logic_expression.txt");
 
 	cout << "Convert Operator: ";
 	convertOpe = convertOperator(logicExp);

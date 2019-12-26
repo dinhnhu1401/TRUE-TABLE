@@ -12,8 +12,6 @@
 
 using namespace std;
 
-//--------------------------------- REACFTOR CODE --------------------------------
-
 void outputVector(vector<int> Vector);
 
 void outputVector2D(vector<vector<int> > Vector);

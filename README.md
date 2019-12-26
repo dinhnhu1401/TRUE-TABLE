@@ -1,6 +1,6 @@
 # TRUE TABLE - C++
 
-## `Polish Notation  Algorithm`
+`Polish Notation Algorithm`
 
 ## Mission
 
@@ -18,7 +18,7 @@ Give a file named **logic_expression.txt** includes one-line  logic expression w
 
 Write a program to return a true table of the logic expression given by the file.
 
-### Input: logic_expression.txt
+### Input: logic_expression.txt doesn't include any "spaces" or "enter"
 
     (pvq)->r
 
@@ -85,10 +85,10 @@ Giả sử list B là biểu thức logic dạng hậu tố, khởi tạo một 
   - Sau khi thực hiện xong mỗi phép toán, đưa kết quả lại vào stack A
 - Kết thúc, giá trị của biểu thức là phần tử cuối cùng trong stack A
 
-## Sử dụng:
+## Run the program
 
 ```bash
-git clone 
+git clone https://github.com/dinhnhu1401/TRUE-TABLE.git
 cat logic_expression.txt # đổi biểu thức logic đầu vào ở đây
 g++ MainPro.cpp -o run # compile file
 ./run # execute file
@@ -97,5 +97,16 @@ g++ MainPro.cpp -o run # compile file
 cat output.txt ## xem kết quả bảng chân trị qua file .txt
 
 # Đối chiếu so sánh kết quả với
-# https://web.stanford.edu/class/cs103/tools/truth-table-tool/
+pip3 install truth-table-generator
+python3 test.py
+
+# Read more at https://pypi.org/project/truth-table-generator/
 ```
+
+## Coding Journey
+
+| Day        | Duration   | Describe Stuck or A done feature     |Cause or Result       |
+|------------|------------|--------------------------------------|----------------------|
+| so long... | ...        | Finish the core requirement          | The current version  |
+| 26/12/2019 | ...        | Push to Github and write README (translate English)      | ...  |
+| 27/12/2019 | ... hours  | Can't print the title                | ...  |

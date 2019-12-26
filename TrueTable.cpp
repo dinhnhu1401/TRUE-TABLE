@@ -6,7 +6,7 @@ void outputVector(vector<int> Vector)
 {
 	/*
 	USING:
-	Funtion to display a vector
+	Function to display a vector
 	Convert to string if the element in range (96, 123) mean [a->z]
 	The operator is displayed by the number of priority.
 	------------------------------------
@@ -31,7 +31,7 @@ void outputVector(vector<int> Vector)
 void outputVector2D(vector<vector<int> > Vector)
 {
 	/*
-	USING: Funtion to display a vector 2D throughout function "outputVector"
+	USING: Function to display a vector 2D throughout function "outputVector"
 	------------------------------------
 	INPUT:
 	@ Vector(vector<vector<int>>) : vector 2D need to show
@@ -132,24 +132,24 @@ vector<int> convertOperator(vector<int> logicEpx)
 
 void writeFile(vector<vector<int> > Table)
 {
-	ofstream myfile;
-	myfile.open("output.txt");
+	ofstream myFile;
+	myFile.open("output.txt");
 	for (int i = 0; i < Table.size(); i++)
 	{
 		for (int j = 0; j < Table[i].size(); j++)
 		{
 			if (Table[i][j] > 96 && Table[i][j] < 123)
 			{
-				myfile << char(Table[i][j]) << "\t";
+				myFile << char(Table[i][j]) << "\t";
 			}
 			else
 			{
-				myfile << Table[i][j] << "\t";
+				myFile << Table[i][j] << "\t";
 			}
 		}
-		myfile << "\n";
+		myFile << "\n";
 	}
-	myfile.close();
+	myFile.close();
 }
 
 int getPriorityOperator(int ope)
@@ -249,7 +249,7 @@ vector<int> reversePolishExp(vector<int> logicExp)
 int determineOperator(int character)
 {
 	/*
-	USING: determine Operator (1 ngoi/ 2ngoi/ bien)
+	USING: determine Operator (1 ngoi/ 2 ngoi/ bien)
 	------------------------------------
 	INPUT:
 	@ charactor(int): Charactor in Logic Polish Notation Expression
