@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void outputVector(vector<int> Vector)
+void outputVector(vector<int> Vector, string space)
 {
 	/*
 	USING:
@@ -19,16 +19,16 @@ void outputVector(vector<int> Vector)
 	for (int i = 0; i < Vector.size(); i++)
 		if (Vector[i] > 96 && Vector[i] < 123)
 		{
-			cout << char(Vector[i]) << " ";
+			cout << char(Vector[i]) << space;
 		}
 		else
 		{
-			cout << Vector[i] << " ";
+			cout << Vector[i] << space;
 		}
 	cout << "\n";
 }
 
-void outputVector2D(vector<vector<int> > Vector)
+void outputVector2D(vector<vector<int> > Vector, string space)
 {
 	/*
 	USING: Function to display a vector 2D throughout function "outputVector"
@@ -39,11 +39,18 @@ void outputVector2D(vector<vector<int> > Vector)
 	@ return: NOTHING - but print vector 2D in screen.
 	*/
 
-	for (int i = 0; i < Vector.size(); i++){
-		outputVector(Vector[i]);
-		cout << "\n";
+	for (int i = 1; i < Vector.size(); i++){
+		outputVector(Vector[i], space);
 	}
 }
+
+void outputVectorStr(vector<string> Vector, string space)
+{
+	for (int i = 0; i < Vector.size(); i++)
+		cout << Vector[i] << space;
+	cout << endl;
+}
+
 
 vector<int> readFile(const char *fileName)
 {
@@ -130,11 +137,17 @@ vector<int> convertOperator(vector<int> logicEpx)
 	return convertOpe;
 }
 
-void writeFile(vector<vector<int> > Table)
+void writeFile(vector<vector<int> > Table, vector<string> title)
 {
 	ofstream myFile;
 	myFile.open("output.txt");
-	for (int i = 0; i < Table.size(); i++)
+	for (int a = 0; a < title.size(); a++)
+	{
+		myFile << title[a] << "\t";
+	}
+	myFile << "\n";
+
+	for (int i = 1; i < Table.size(); i++)
 	{
 		for (int j = 0; j < Table[i].size(); j++)
 		{
@@ -405,6 +418,25 @@ vector<int> assignValue(string line, vector<int> Var)
 	return VarAssign;
 }
 
+vector<string> convertPolishExpStr(vector<int> &polishExp)
+{
+	vector<string> polishExpStr;
+
+	for (int i = 0; i < polishExp.size(); i++)
+		if (polishExp[i] > 96 && polishExp[i] < 123)
+		{	
+			string var(1, char(polishExp[i]));
+			polishExpStr.push_back(var);
+		}
+		else
+		{
+			string op = to_string(polishExp[i]);
+			polishExpStr.push_back(op);
+		}
+	return polishExpStr;
+}
+
+
 vector<vector<int> > generateTrueTable(vector<int> Var)
 {
 	/*
@@ -486,58 +518,83 @@ vector<vector<int> > calculateTrueTable(vector<vector<int> > geneTable, vector<i
 	return geneTable;
 }
 
-// void printTittle(vector<vector<int> > geneTable, vector<int> &polishExp, vector<int> Var){
-// 	/*
-// 	USING:
-// 	Print the Title of True Table
-// 	------------------------------------
-// 	INPUT:
-// 	@ Var(vector<int>): vector of all variables
-// 	@ geneTable(vector<vector<int> >) Generate Table with value 0 - 1 (only Colums of variable)
-// 	@ polishExp(vector<int>): Polish Notation Expression
-// 	OUTPUT:
-// 	@ nothing
-// 	*/
-// 	stack<int> S;
+vector<string> getTittle(vector<int> &polishExp, vector<string> &polishExpStr, vector<int> Var){
+	/*
+	USING:
+	Print the Title of True Table
+	------------------------------------
+	INPUT:
+	@ Var(vector<int>): vector of all variables
+	@ polishExp(vector<int>): Polish Notation Expression
+	OUTPUT:
+	@ nothing
+	*/
+	stack<string> S;
+	vector<string> title;
+
+	for (int a = 0; a < Var.size(); a++)
+	{
+		string var(1, char(Var[a]));
+		title.push_back(var);
+	}
 
 
+	for (int k = 0; k < polishExpStr.size(); k++)
+	{
+		//  variables
+		if (determineOperator(polishExp[k]) == 0)
+		{
+			S.push(polishExpStr[k]);
+		}
 
-
-// 	for (int k = 0; k < polishExp.size(); k++)
-// 	{
-// 		//  variables
-// 		if (determineOperator(polishExp[k]) == 0)
-// 		{
-// 			S.push(polishExp[k])
-// 		}
-
-// 		// phep toan
-// 		else
-// 		{
-// 			string group = "";
-// 			// phep toan 2 ngoi
-// 			if (determineOperator(polishExp[k]) == 2)
-// 			{
-// 				int right = S.top(); // => tren cung la ben phai (nho pop ra)
-// 				S.pop();
-// 				int left = S.top(); // => ke tren cung la ben trai (nho pop ra)
-// 				S.pop();
-// 				// result = evaluteOpe2(polishExp[k], left, right);
-// 				group = string(right) + " " + string(polishExp[k]) + " " + string(left);
-// 			}
-// 			// phep toan 1 ngoi
-// 			else
-// 			{
-// 				int one = S.top();
-// 				S.pop();
-// 				result = evaluteOpe1(one);
-// 				group = string(polishExp[k]) + " " + string(one);
-// 			}
-// 			S.push(group);
-// 			// geneTable[i].push_back(result);
-// 			cout << s.top();
-// 		}
-// 	}
-	
-// 	return geneTable;
-// }
+		// phep toan
+		else
+		{
+			string group;
+			// phep toan 2 ngoi
+			if (determineOperator(polishExp[k]) == 2)
+			{
+				string right = S.top(); // => tren cung la ben phai (nho pop ra)
+				S.pop();
+				string left = S.top(); // => ke tren cung la ben trai (nho pop ra)
+				S.pop();
+				group += "(";
+				group += left;
+				if (polishExp[k] == 2)
+				{
+					group += "v";
+				}
+				if (polishExp[k] == 3)
+				{
+					group += "^";
+				}
+				if (polishExp[k] == 4)
+				{
+					group += "->";
+				}
+				if (polishExp[k] == 5)
+				{
+					group += "<->";
+				}
+				group += right;
+				group += ")";
+				S.push(group);
+				string t = S.top();
+				t.pop_back();
+				t.erase(t.begin(), t.begin()+1);
+				title.push_back(t);
+			}
+			// phep toan 1 ngoi
+			else
+			{
+				string one = S.top(); // => tren cung la ben phai (nho pop ra)
+				S.pop();
+				group += "~";
+				group += one;
+				S.push(group);
+				title.push_back(S.top());
+			}
+		}
+	}
+	return title;
+}

@@ -87,7 +87,7 @@ Giả sử list B là biểu thức logic dạng hậu tố, khởi tạo một 
 
 ## Run the program
 
-```bash
+``` bash
 git clone https://github.com/dinhnhu1401/TRUE-TABLE.git
 cat logic_expression.txt # đổi biểu thức logic đầu vào ở đây
 g++ MainPro.cpp -o run # compile file
@@ -95,12 +95,6 @@ g++ MainPro.cpp -o run # compile file
 
 
 cat output.txt ## xem kết quả bảng chân trị qua file .txt
-
-# Đối chiếu so sánh kết quả với
-pip3 install truth-table-generator
-python3 test.py
-
-# Read more at https://pypi.org/project/truth-table-generator/
 ```
 
 ## Coding Journey
@@ -108,5 +102,5 @@ python3 test.py
 | Day        | Duration   | Describe Stuck or A done feature     |Cause or Result       |
 |------------|------------|--------------------------------------|----------------------|
 | so long... | ...        | Finish the core requirement(can't print title)   | The old version  |
-| 26/12/2019 | ...        | Push to Github and write README (translate English)      | not done yet  |
+| 26/12/2019 | ...        | Push to Github and write README (translate English) | not done yet  |
 | 27/12/2019 | 4 hours    | Print the title + refactoring code               | Ver 1.0.0   |
