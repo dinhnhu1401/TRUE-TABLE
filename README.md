@@ -107,6 +107,6 @@ python3 test.py
 
 | Day        | Duration   | Describe Stuck or A done feature     |Cause or Result       |
 |------------|------------|--------------------------------------|----------------------|
-| so long... | ...        | Finish the core requirement          | The current version  |
-| 26/12/2019 | ...        | Push to Github and write README (translate English)      | ...  |
-| 27/12/2019 | ... hours  | Can't print the title                | ...  |
+| so long... | ...        | Finish the core requirement(can't print title)   | The old version  |
+| 26/12/2019 | ...        | Push to Github and write README (translate English)      | not done yet  |
+| 27/12/2019 | 4 hours    | Print the title + refactoring code               | Ver 1.0.0   |

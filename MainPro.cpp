@@ -54,6 +54,7 @@ int main()
 
 
 	vector<string> polishExpStr;
+
 	for (int i = 0; i < polishExp.size(); i++)
 		if (polishExp[i] > 96 && polishExp[i] < 123)
 		{	
@@ -68,9 +69,11 @@ int main()
 	
 	for (int i = 0; i < polishExpStr.size(); i++)
 		cout << polishExpStr[i] << " ";
+	cout << endl;
 	
 
 	stack<string> S;
+	vector<string> title;
 
 
 	for (int k = 0; k < polishExpStr.size(); k++)
@@ -92,37 +95,46 @@ int main()
 				S.pop();
 				string left = S.top(); // => ke tren cung la ben trai (nho pop ra)
 				S.pop();
+				group += "(";
 				group += left;
-				group += polishExpStr[k];
+				if (polishExp[k] == 2)
+				{
+					group += "v";
+				}
+				if (polishExp[k] == 3)
+				{
+					group += "^";
+				}
+				if (polishExp[k] == 4)
+				{
+					group += "->";
+				}
+				if (polishExp[k] == 5)
+				{
+					group += "<->";
+				}
 				group += right;
+				group += ")";
+				S.push(group);
+				string t = S.top();
+				t.pop_back();
+				t.erase(t.begin(), t.begin()+1);
+				title.push_back(t);
 			}
 			// phep toan 1 ngoi
 			else
 			{
 				string one = S.top(); // => tren cung la ben phai (nho pop ra)
 				S.pop();
-				group += polishExpStr[k];
+				group += "~";
 				group += one;
+				S.push(group);
+				title.push_back(S.top());
 			}
-			S.push(group);
-			cout << endl;
-			cout << S.top();
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	for (int i = 0; i < title.size(); i++)
+		cout << title[i] << "\n";
 
 	return 0;
 }
