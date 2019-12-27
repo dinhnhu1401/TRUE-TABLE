@@ -43,3 +43,5 @@ int getIndex(vector<int> Var, int key);
 vector<vector<int> > generateTrueTable(vector<int> Var);
 
 vector<vector<int> > calculateTrueTable(vector<vector<int> > geneTable, vector<int> &polishExp, vector<int> Var);
+
+void printTittle(vector<vector<int> > geneTable, vector<int> &polishExp, vector<int> Var);

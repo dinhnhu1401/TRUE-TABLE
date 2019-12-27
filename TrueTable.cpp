@@ -452,8 +452,6 @@ vector<vector<int> > calculateTrueTable(vector<vector<int> > geneTable, vector<i
 	stack<int> S;
 	int indexVar;
 
-	vector<int> title;
-
 	for (int i = 1; i < geneTable.size(); i++)
 	{
 		for (int k = 0; k < polishExp.size(); k++)
@@ -488,4 +486,58 @@ vector<vector<int> > calculateTrueTable(vector<vector<int> > geneTable, vector<i
 	return geneTable;
 }
 
+// void printTittle(vector<vector<int> > geneTable, vector<int> &polishExp, vector<int> Var){
+// 	/*
+// 	USING:
+// 	Print the Title of True Table
+// 	------------------------------------
+// 	INPUT:
+// 	@ Var(vector<int>): vector of all variables
+// 	@ geneTable(vector<vector<int> >) Generate Table with value 0 - 1 (only Colums of variable)
+// 	@ polishExp(vector<int>): Polish Notation Expression
+// 	OUTPUT:
+// 	@ nothing
+// 	*/
+// 	stack<int> S;
 
+
+
+
+// 	for (int k = 0; k < polishExp.size(); k++)
+// 	{
+// 		//  variables
+// 		if (determineOperator(polishExp[k]) == 0)
+// 		{
+// 			S.push(polishExp[k])
+// 		}
+
+// 		// phep toan
+// 		else
+// 		{
+// 			string group = "";
+// 			// phep toan 2 ngoi
+// 			if (determineOperator(polishExp[k]) == 2)
+// 			{
+// 				int right = S.top(); // => tren cung la ben phai (nho pop ra)
+// 				S.pop();
+// 				int left = S.top(); // => ke tren cung la ben trai (nho pop ra)
+// 				S.pop();
+// 				// result = evaluteOpe2(polishExp[k], left, right);
+// 				group = string(right) + " " + string(polishExp[k]) + " " + string(left);
+// 			}
+// 			// phep toan 1 ngoi
+// 			else
+// 			{
+// 				int one = S.top();
+// 				S.pop();
+// 				result = evaluteOpe1(one);
+// 				group = string(polishExp[k]) + " " + string(one);
+// 			}
+// 			S.push(group);
+// 			// geneTable[i].push_back(result);
+// 			cout << s.top();
+// 		}
+// 	}
+	
+// 	return geneTable;
+// }

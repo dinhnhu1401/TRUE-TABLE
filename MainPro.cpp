@@ -43,12 +43,86 @@ int main()
 	variables = getVariables(polishExp);
 	outputVector(variables);
 
-	cout << "\n----- TRUE TABLE -----\n" << endl;
-	geneTable = generateTrueTable(variables);
-	TrueTable = calculateTrueTable(geneTable, polishExp, variables);
-	outputVector2D(TrueTable);
+	// cout << "\n----- TRUE TABLE -----\n" << endl;
+	// geneTable = generateTrueTable(variables);
+	// TrueTable = calculateTrueTable(geneTable, polishExp, variables);
+	// outputVector2D(TrueTable);
 
-	writeFile(TrueTable);
+	// writeFile(TrueTable);
+
+	cout << "\n----- TITLE  -----\n" << endl;
+
+
+	vector<string> polishExpStr;
+	for (int i = 0; i < polishExp.size(); i++)
+		if (polishExp[i] > 96 && polishExp[i] < 123)
+		{	
+			string var(1, char(polishExp[i]));
+			polishExpStr.push_back(var);
+		}
+		else
+		{
+			string op = to_string(polishExp[i]);
+			polishExpStr.push_back(op);
+		}
+	
+	for (int i = 0; i < polishExpStr.size(); i++)
+		cout << polishExpStr[i] << " ";
+	
+
+	stack<string> S;
+
+
+	for (int k = 0; k < polishExpStr.size(); k++)
+	{
+		//  variables
+		if (determineOperator(polishExp[k]) == 0)
+		{
+			S.push(polishExpStr[k]);
+		}
+
+		// phep toan
+		else
+		{
+			string group;
+			// phep toan 2 ngoi
+			if (determineOperator(polishExp[k]) == 2)
+			{
+				string right = S.top(); // => tren cung la ben phai (nho pop ra)
+				S.pop();
+				string left = S.top(); // => ke tren cung la ben trai (nho pop ra)
+				S.pop();
+				group += left;
+				group += polishExpStr[k];
+				group += right;
+			}
+			// phep toan 1 ngoi
+			else
+			{
+				string one = S.top(); // => tren cung la ben phai (nho pop ra)
+				S.pop();
+				group += polishExpStr[k];
+				group += one;
+			}
+			S.push(group);
+			cout << endl;
+			cout << S.top();
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	return 0;
 }
